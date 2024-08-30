@@ -58,12 +58,12 @@ class StatisticsService
         $mealsTypes = MealType::orderBy('id')->get();
         foreach ($mealsTypes as $mealType) {
             //if the user is a dou then we will get the number of meals per type for the current date and the connected dou
-                if(auth()->user()->hasRole('dou'))
+            if(auth()->user()->hasRole('dou'))
                     $result[$mealType->name] =  Mealstatsperday::byMealsTodayDou($date)
                                                 ->where('meal_type_id', $mealType->id)->get();
 
             //if the user is an onou or admin then we will get the number of meals per type for the current date and the connected
-                if(auth()->user()->hasRole('onou') || auth()->user()->hasRole('admin'))
+            if(auth()->user()->hasRole('onou') || auth()->user()->hasRole('admin'))
                     $result[$mealType->name] = Mealstatsperday::byMealsTodayOnou($date)
                                                  ->where('meal_type_id', $mealType->id)->get();
 

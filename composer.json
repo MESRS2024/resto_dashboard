@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "ext-calendar": "*",
         "bavix/laravel-wallet": "^10.1.6",
         "consoletvs/charts": "6.*",
         "doctrine/dbal": "^3.6",
@@ -17,14 +18,15 @@
         "laravel/framework": "v10.48.18",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "laravolt/avatar": "^5.1",
         "plank/laravel-mediable": "^5.9",
         "rappasoft/laravel-livewire-tables": "v2.15.0",
-        "wire-elements/modal": "^1.0",
-        "ext-calendar": "*"
+        "wire-elements/modal": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^v3.13.5",
         "barryvdh/laravel-ide-helper": "^v3.1.0",
+        "deployer/deployer": "^7.4",
         "fakerphp/faker": "v1.23.1",
         "laravel/pint": "v1.16.2",
         "laravel/sail": "v1.31.0",

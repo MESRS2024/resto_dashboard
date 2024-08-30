@@ -1,3 +1,4 @@
+@role('admin')
 <div class='btn-group'>
     <a href="#popUp" href="{{ $editUrl }}"
        class='btn btn-default btn-xs' onclick="loadeditform('{{ $showUrl }}', '  {{__('crud.show') . ' ' . $title }}')">
@@ -12,3 +13,4 @@
         <i class="fa fa-trash"></i>
     </a>
 </div>
+@endrole

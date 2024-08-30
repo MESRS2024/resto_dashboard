@@ -1,18 +1,18 @@
 <?php
 
 return [
-    'singular' => 'المستعمل',
-    'plural' => 'المستعملين',
+    'singular' => 'User',
+    'plural' => 'Users',
     'fields' => [
-        'id' => 'الرقم',
-        'name' => 'الاسم الكامل',
-        'email' => 'البريد الايلكتروني',
-        'email_verified_at' => 'تاريخ التفعبل',
-        'password' => 'كلمة المرور',
+        'id' => 'Id',
+        'name' => 'Name',
+        'email' => 'Email',
+        'email_verified_at' => 'Account Activated At',
+        'password' => 'Password',
         'remember_token' => 'Remember Token',
-        'sevice_id'=>'المصلحة',
-        'role_id'=>'الدور',
-        'created_at' => 'تاريخ الانشاء',
-        'updated_at' => 'تاريخ اخر تعديل',
+        'sevice_id'=>'Service',
+        'role_id'=>'Role',
+        'created_at' => 'Created At',
+        'updated_at' => 'Updated At',
     ],
 ];

@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'member_since'=>'مسجل منذ'
+    'member_since'=>'مسجل منذ',
+     'balance'  => 'الرصيد',
     ];
