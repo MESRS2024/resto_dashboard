@@ -1,0 +1,39 @@
+import:
+  - recipe/laravel.php
+
+config:
+  application: 'resto_dashboard'
+  repository: 'https://github.com/MESRS2024/resto_dashboard.git'
+  branch: 'master'
+
+hosts:
+  production:
+    remote_user: root
+    hostname: '10.10.10.40'
+    deploy_path: '/var/www/resto_dashboard'
+    composer_options: '--verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader'
+    shared_files:
+        - '.env'
+    shared_dirs:
+        - 'storage'
+    writable_dirs:
+        - 'storage'
+        - 'bootstrap/cache'
+
+tasks:
+  build:
+    - run: uptime
+  deploy:
+    - deploy:prepare
+    - deploy:vendors
+    - artisan:storage:link
+    - artisan:view:cache
+    - artisan:config:cache
+    - artisan:optimize
+    - artisan:down
+    - artisan:migrate
+    - artisan:up
+    - deploy:publish
+
+after:
+  deploy:failed: deploy:unlock
