@@ -28,19 +28,19 @@ class MealTypesTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("Name", "name")
+            Column::make(__('models/mealTypes.fields.name'), "name")
                 ->sortable()
                 ->searchable(),
-            Column::make("Code", "code")
+            Column::make(__('models/mealTypes.fields.code'), "code")
                 ->sortable()
                 ->searchable(),
-            Column::make("Start", "start")
+            Column::make(__('models/mealTypes.fields.start'), "start")
                 ->sortable()
                 ->searchable(),
-            Column::make("End", "end")
+            Column::make(__('models/mealTypes.fields.end'), "end")
                 ->sortable()
                 ->searchable(),
-            Column::make("Actions", 'id')
+            Column::make(__('crud.actions'), 'id')
                 ->format(
                     fn($value, $row, Column $column) => view('common.livewire-tables.actions', [
                         'showUrl' => route('meal-types.show', $row->id),

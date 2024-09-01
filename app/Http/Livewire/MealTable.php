@@ -38,32 +38,32 @@ class MealTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make('Date', 'create_date')
+            Column::make(__('Models/meals.fields.create_date'), 'create_date')
                 ->sortable(),
-            Column::make('Resto name', 'resto_name')
+            Column::make(__('Models/meals.fields.resto_name'), 'resto_name')
                 ->sortable(),
-            Column::make('Number of meals', 'count')
+            Column::make(__('Models/meals.fields.count'), 'count')
                 ->format(
                     fn($value, $row, Column $column) => view('common.livewire-tables.stats.all', [
                         'color' => 'primary',
                         'count' => $row->count
                     ])
                 ),
-            Column::make('Number of meals Breakfast', 'breakfast')
+            Column::make(__('Models/meals.fields.breakfast'), 'breakfast')
                 ->format(
                     fn($value, $row, Column $column) => view('common.livewire-tables.stats.all', [
                         'color' =>'info',
                         'count' => $row->breakfast
                     ])
                 ),
-            Column::make('Number of meals launch', 'launch')
+            Column::make(__('Models/meals.fields.launch'), 'launch')
                 ->format(
                     fn($value, $row, Column $column) => view('common.livewire-tables.stats.all', [
                         'color' => 'success',
                         'count' => $row->launch
                     ])
                 ),
-            Column::make('Number of meals dinner', 'dinner')
+            Column::make(__('Models/meals.fields.dinner'), 'dinner')
                 ->format(
                     fn($value, $row, Column $column) => view('common.livewire-tables.stats.all', [
                         'color' => 'warning',

@@ -23,32 +23,17 @@ Route::get('/', function () {
 });
 
 Auth::routes(['register'=>false]);
-Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/stats/{page}', [App\Http\Controllers\HomeController::class, 'stats'])->name('stats');
-Route::resource('administration/users', App\Http\Controllers\UserController::class);
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/stats/{page}', [App\Http\Controllers\HomeController::class, 'stats'])->name('stats');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::resource('clients', App\Http\Controllers\clientsController::class);
-
-Route::resource('vendeurs', App\Http\Controllers\VendeurController::class);
-Route::resource('dfms', App\Http\Controllers\DfmController::class);
-Route::resource('restos', App\Http\Controllers\RestoController::class);
-Route::resource('meal-types', App\Http\Controllers\MealTypeController::class);
-
-Route::resource('residences', App\Http\Controllers\ResidencesController::class);
+    Route::resource('administration/users', App\Http\Controllers\UserController::class);
+    Route::resource('clients', App\Http\Controllers\clientsController::class);
+    Route::resource('vendeurs', App\Http\Controllers\VendeurController::class);
+    Route::resource('dfms', App\Http\Controllers\DfmController::class);
+    Route::resource('restos', App\Http\Controllers\RestoController::class);
+    Route::resource('meal-types', App\Http\Controllers\MealTypeController::class);
+    Route::resource('residences', App\Http\Controllers\ResidencesController::class);
+});

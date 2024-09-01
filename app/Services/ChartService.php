@@ -35,13 +35,13 @@ class ChartService
         }
 
         $chart->labels($labels);
-        $chart->dataset('Breakfast', 'bar', array_values($Breakfast))
+        $chart->dataset(__('home/dashboard.breakfast'), 'bar', array_values($Breakfast))
             ->color("rgb(255, 99, 132)")
             ->backgroundcolor("rgb(255, 99, 132)");
-        $chart->dataset('Luanch', 'bar', array_values($launch))
+        $chart->dataset(__('home/dashboard.launch'), 'bar', array_values($launch))
             ->color("rgb(99, 255, 132)")
             ->backgroundcolor("rgb(00, 255, 132)");
-        $chart->dataset('Dinner', 'bar', array_values($dinner))
+        $chart->dataset(__('home/dashboard.dinner'), 'bar', array_values($dinner))
             ->color("rgb(132, 99, 255)")
             ->backgroundcolor("rgb(132, 99, 266)");
         return $chart;

@@ -28,28 +28,28 @@ class ResidencesTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("Code", "code")
+            Column::make(__('Models/residences.fields.code'), "code")
                 ->sortable()
                 ->searchable(),
-            Column::make("Wilaya", "wilaya")
+            Column::make(__('Models/residences.fields.wilaya'), "wilaya")
                 ->sortable()
                 ->searchable(),
-            Column::make("Id Residence", "id_residence")
+            Column::make(__('Models/residences.fields.id_residence'), "id_residence")
                 ->sortable()
                 ->searchable(),
-            Column::make("Denomination Fr", "denomination_fr")
+            Column::make(__('Models/residences.fields.denomination_fr'), "denomination_fr")
                 ->sortable()
                 ->searchable(),
-            Column::make("Denomination Ar", "denomination_ar")
+            Column::make(__('Models/residences.fields.denomination_ar'), "denomination_ar")
                 ->sortable()
                 ->searchable(),
-            Column::make("Dou", "dou")
+            Column::make(__('Models/residences.fields.dou'), "dou")
                 ->sortable()
                 ->searchable(),
-            Column::make("Type Residence", "type_residence")
+            Column::make(__('Models/residences.fields.type_residence'), "type_residence")
                 ->sortable()
                 ->searchable(),
-            Column::make("Actions", 'id')
+            Column::make(__('crud.actions'), 'id')
                 ->format(
                     fn($value, $row, Column $column) => view('common.livewire-tables.actions', [
                         'showUrl' => route('residences.show', $row->id),
