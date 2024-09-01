@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <h1 class="text-black-50">
-            {{__('messages.welcome') }}
+            {{__('home/dashboard.welcome') }}
             {{Auth::user()->name_en}}
         </h1>
     </div>

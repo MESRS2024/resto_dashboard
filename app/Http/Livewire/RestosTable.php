@@ -39,10 +39,10 @@ class RestosTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make("Dou Code", "dou_code")
+            Column::make(__('Models/restos.fields.dou_code'), "dou_code")
                 ->sortable()
                 ->searchable(),
-            Column::make("Resto Type", "resto_type")
+            Column::make(__('Models/restos.fields.resto_type'), "resto_type")
                 ->sortable()
                 ->format(
                     fn($value, $row, Column $column) => view('common.livewire-tables.resto.type', [
@@ -60,22 +60,22 @@ class RestosTable extends DataTableComponent
                         }
                     ])
                 ),
-            Column::make("Name", "name")
+            Column::make(__('Models/restos.fields.name'), "name")
                 ->sortable()
                 ->searchable(),
-            Column::make("Code", "code")
+            Column::make(__('Models/restos.fields.code'), "code")
                 ->sortable()
                 ->searchable(),
 
-            BooleanColumn::make("Is Active", "is_active")
+            BooleanColumn::make(__('Models/restos.fields.is_active'), "is_active")
                 ->setView('common.livewire-tables.resto.active'),
-            BooleanColumn::make("Breakfast", "breakfast")
+            BooleanColumn::make(__('Models/restos.fields.breakfast'), "breakfast")
                 ->setView('common.livewire-tables.resto.active'),
-            BooleanColumn::make("Lunch", "lunch")
+            BooleanColumn::make(__('Models/restos.fields.lunch'), "lunch")
                 ->setView('common.livewire-tables.resto.active'),
-            BooleanColumn::make("Dinner", "dinner")
+            BooleanColumn::make(__('Models/restos.fields.dinner'), "dinner")
                 ->setView('common.livewire-tables.resto.active'),
-            Column::make("Actions", 'id')
+            Column::make(__('crud.actions'), 'id')
                 ->format(
                     fn($value, $row, Column $column) => view('common.livewire-tables.actions', [
                         'showUrl' => route('restos.show', $row->id),
