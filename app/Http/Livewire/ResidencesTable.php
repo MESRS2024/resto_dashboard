@@ -28,25 +28,25 @@ class ResidencesTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make(__('Models/residences.fields.code'), "code")
+            Column::make(__('models/residences.fields.code'), "code")
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Models/residences.fields.wilaya'), "wilaya")
+            Column::make(__('models/residences.fields.wilaya'), "wilaya")
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Models/residences.fields.id_residence'), "id_residence")
+            Column::make(__('models/residences.fields.id_residence'), "id_residence")
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Models/residences.fields.denomination_fr'), "denomination_fr")
+            Column::make(__('models/residences.fields.denomination_fr'), "denomination_fr")
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Models/residences.fields.denomination_ar'), "denomination_ar")
+            Column::make(__('models/residences.fields.denomination_ar'), "denomination_ar")
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Models/residences.fields.dou'), "dou")
+            Column::make(__('models/residences.fields.dou'), "dou")
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Models/residences.fields.type_residence'), "type_residence")
+            Column::make(__('models/residences.fields.type_residence'), "type_residence")
                 ->sortable()
                 ->searchable(),
             Column::make(__('crud.actions'), 'id')
