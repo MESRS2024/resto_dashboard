@@ -39,10 +39,10 @@ class RestosTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make(__('Models/restos.fields.dou_code'), "dou_code")
+            Column::make(__('models/restos.fields.dou_code'), "dou_code")
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Models/restos.fields.resto_type'), "resto_type")
+            Column::make(__('models/restos.fields.resto_type'), "resto_type")
                 ->sortable()
                 ->format(
                     fn($value, $row, Column $column) => view('common.livewire-tables.resto.type', [
@@ -60,20 +60,20 @@ class RestosTable extends DataTableComponent
                         }
                     ])
                 ),
-            Column::make(__('Models/restos.fields.name'), "name")
+            Column::make(__('models/restos.fields.name'), "name")
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Models/restos.fields.code'), "code")
+            Column::make(__('models/restos.fields.code'), "code")
                 ->sortable()
                 ->searchable(),
 
-            BooleanColumn::make(__('Models/restos.fields.is_active'), "is_active")
+            BooleanColumn::make(__('models/restos.fields.is_active'), "is_active")
                 ->setView('common.livewire-tables.resto.active'),
-            BooleanColumn::make(__('Models/restos.fields.breakfast'), "breakfast")
+            BooleanColumn::make(__('models/restos.fields.breakfast'), "breakfast")
                 ->setView('common.livewire-tables.resto.active'),
-            BooleanColumn::make(__('Models/restos.fields.lunch'), "lunch")
+            BooleanColumn::make(__('models/restos.fields.lunch'), "lunch")
                 ->setView('common.livewire-tables.resto.active'),
-            BooleanColumn::make(__('Models/restos.fields.dinner'), "dinner")
+            BooleanColumn::make(__('models/restos.fields.dinner'), "dinner")
                 ->setView('common.livewire-tables.resto.active'),
             Column::make(__('crud.actions'), 'id')
                 ->format(

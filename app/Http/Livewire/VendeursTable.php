@@ -41,18 +41,18 @@ class VendeursTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make(__('Models/vendeurs.fields.code_dou'), "resto.dou_code")
+            Column::make(__('models/vendeurs.fields.code_dou'), "resto.dou_code")
                 ->eagerLoadRelations()
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Models/vendeurs.fields.resto_id'), "resto.name")
+            Column::make(__('models/vendeurs.fields.resto_id'), "resto.name")
                 ->eagerLoadRelations()
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Models/vendeurs.fields.name'), "name")
+            Column::make(__('models/vendeurs.fields.name'), "name")
                 ->sortable()
                 ->searchable(),
-            Column::make(__('Models/vendeurs.balance'), "wallet.balance")
+            Column::make(__('models/vendeurs.balance'), "wallet.balance")
                 ->eagerLoadRelations()
                 ->format(
                     fn($value, $row, Column $column) => view('common.livewire-tables.clients.balance', [
