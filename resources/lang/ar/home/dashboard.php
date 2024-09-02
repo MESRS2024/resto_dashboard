@@ -25,4 +25,5 @@ return [
     'october' => 'أكتوبر',
     'november' => 'نوفمبر',
     'december' => 'ديسمبر',
+    'currency' => 'دج',
 ];

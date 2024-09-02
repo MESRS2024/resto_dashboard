@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Charts\MonthlyMeals;
 use App\Http\Requests\HomePostRequest;
+use App\Services\homeServices\HomeService;
 use App\Services\StatisticsService;
 use Auth;
 use App\Services\ChartService;
@@ -29,36 +30,23 @@ class HomeController extends Controller
      */
     public function index(HomePostRequest $request)
     {
-       $statisticsService = new StatisticsService();
-       //When the user is a dou.
-       $mealsPerDou = $statisticsService
-                        ->statsPerMealsPerDou(
-                            Carbon::now()->format('Y-m-d'),
-                            //'2024-05-15',
-                            auth()->user()->code_dou);
+        if(Auth::user()->hasRole('admin'))
+        {
+            return (new HomeService())->adminDashboard($request->month, $request->year);
+        }
+        if(Auth::user()->hasRole('dou'))
+        {
+            return (new HomeService())->adminDashboard($request->month, $request->year);
+        }
+        if(Auth::user()->hasRole('residence'))
+        {
+            return (new HomeService())->adminDashboard($request->month, $request->year);
+        }
+        if(Auth::user()->hasRole('dfm'))
+        {
+            return (new HomeService())->dfmDashboard($request->month, $request->year);
+        }
 
-       //When the user is Onou.
-
-       //When the user is Residence
-        $mealsPerDou = $statisticsService
-            ->statsPerMealsPerDou(
-                Carbon::now()->format('Y-m-d'),
-                //'2024-05-15',
-                auth()->user()->progres_id);
-        // create a chart for monthly meals
-        $month = ($request->month)?$request->month: Carbon::now()->month;
-
-        $year = ($request->year)?$request->year: Carbon::now()->year;
-
-        $chart = (new ChartService) ->MonthlyMeals($month, $year);
-
-        return view('Home.home',
-            [
-                'mealsPerDou' => $mealsPerDou,
-                'chart' => $chart,
-                'month' => $month,
-                'year' => $year
-            ]);
     }
 
 

@@ -52,6 +52,9 @@ class VendeursTable extends DataTableComponent
             Column::make(__('models/vendeurs.fields.name'), "name")
                 ->sortable()
                 ->searchable(),
+            Column::make(__('models/vendeurs.fields.phone'), "phone")
+                ->sortable()
+                ->searchable(),
             Column::make(__('models/vendeurs.balance'), "wallet.balance")
                 ->eagerLoadRelations()
                 ->format(
@@ -67,6 +70,7 @@ class VendeursTable extends DataTableComponent
                     fn($value, $row, Column $column) => view('common.livewire-tables.actions', [
                         'showUrl' => route('vendeurs.show', $row->id),
                         'editUrl' => route('vendeurs.edit', $row->id),
+                        'flixyUrl' => route('moveSoleToSeller.create', $row->id),
                         'recordId' => $row->id,
                         'title' => $row->name,
                     ])

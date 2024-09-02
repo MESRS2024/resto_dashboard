@@ -23,5 +23,10 @@ class restoScope implements Scope
 
         if (auth()->user()->hasRole('residence'))
             $builder->where('id_progres', auth()->user()->residence_id);
+
+        if (auth()->user()->hasRole('dfm'))
+            $builder->where('dou_code', auth()->user()->code_dou);
+
+
     }
 }

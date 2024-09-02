@@ -7,8 +7,8 @@
         </h1>
     </div>
 
-    @include('Home.partials.today-stats', ['mealsPerDou' => $mealsPerDou])
-    @include('Home.partials.charts-stats', ['chart' => $chart, 'month' => $month, 'year' => $year])
+    @include('Home.partials.home.today-stats', ['mealsPerDou' => $mealsPerDou])
+    @include('Home.partials.home.charts-stats', ['chart' => $chart, 'month' => $month, 'year' => $year])
 @endsection
 
 @

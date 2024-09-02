@@ -4,17 +4,19 @@
 
         <div class="card">
 
-            {!! Form::model($mealType, ['route' => ['meal-types.update', $mealType->id], 'method' => 'patch']) !!}
+            {!! Form::open(['route' => 'moveSoleToSeller.store']) !!}
 
             <div class="card-body">
+
                 <div class="row">
-                    @include('meal_types.fields')
+                    @include('flixy.fields')
                 </div>
+
             </div>
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('meal-types.index') }}" class="btn btn-default"> @lang('crud.cancel') </a>
+                <a href="{{ route('vendeurs.index') }}" class="btn btn-default"> @lang('crud.cancel') </a>
             </div>
 
             {!! Form::close() !!}

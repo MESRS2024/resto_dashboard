@@ -12,7 +12,7 @@ class Mealstats extends Model
 {
     use HasFactory;
 
-    protected $table = 'V_mealstats';
+    protected $table = 'v_mealstats';
 
     public static function getMonthMealsStats($month):collection
     {

@@ -57,7 +57,7 @@ class Flixy extends Model
                      ->join('restos', 'restos.id', '=', 'vendeurs.resto_id')
                      ->whereNull('vendeurs.deleted_at')
                      ->byVendeurPerDou($dou_code, 'flixies.resto_id')
-                     ->groupBy(['vendeur_id','resto_id','create_date','vendeurs.name','restos.name']);
+                     ->groupBy(['vendeur_id','flixies.resto_id','create_date','vendeurs.name','restos.name']);
 
     }
 }

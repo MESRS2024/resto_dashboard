@@ -66,3 +66,11 @@ if(!function_exists('getRandomBackground')){
         return $backgrounds[array_rand($backgrounds)];
     }
 }
+
+// function that format balance  to be in the format 0.00 instead of 0 dzd
+if (!function_exists('formatBalance')) {
+    function formatBalance($balance)
+    {
+        return number_format($balance, 2, '.', '');
+    }
+}

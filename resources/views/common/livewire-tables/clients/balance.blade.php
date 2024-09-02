@@ -1,6 +1,8 @@
 <h5>
     <span class="badge
             badge-{{ $color}}">
-            {{ number_format($balance,2) }} DA
+         {{formatBalance($balance) .
+                                ' ' . __('home/dashboard.currency')}}
+
     </span>
 </h5>
