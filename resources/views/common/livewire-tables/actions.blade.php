@@ -14,3 +14,9 @@
     </a>
 </div>
 @endrole
+@role('dfm')
+<a href="#popUp" href="{{ $flixyUrl }}"
+   class='btn btn-success' onclick="loadeditform('{{ $flixyUrl }}', '{{__('crud.flixy') . ' ' . $title }}')">
+    <i class="fa fa-plus"></i> {{__('crud.flixy')}}
+</a>
+@endrole

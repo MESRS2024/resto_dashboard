@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mealstatsperday extends Model
 {
     use HasFactory;
-    protected $table = 'V_mealstatperdays';
+    protected $table = 'v_mealstatperdays';
 
 
     public function scopeByMealsTodayDou($query, $date)

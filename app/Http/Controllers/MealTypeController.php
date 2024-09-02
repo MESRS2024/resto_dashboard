@@ -32,7 +32,7 @@ class MealTypeController extends AppBaseController
      */
     public function create()
     {
-        return view('meal-types.create');
+        return view('meal_types.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class MealTypeController extends AppBaseController
 
         Flash::success(__('messages.saved', ['model' => __('models/mealTypes.singular')]));
 
-        return redirect(route('mealTypes.index'));
+        return redirect(route('meal-types.index'));
     }
 
     /**
@@ -59,7 +59,7 @@ class MealTypeController extends AppBaseController
         if (empty($mealType)) {
             Flash::error(__('models/mealTypes.singular').' '.__('messages.not_found'));
 
-            return redirect(route('mealTypes.index'));
+            return redirect(route('meal-types.index'));
         }
 
         return view('meal_types.show')->with('mealType', $mealType);
@@ -75,7 +75,7 @@ class MealTypeController extends AppBaseController
         if (empty($mealType)) {
             Flash::error(__('models/mealTypes.singular').' '.__('messages.not_found'));
 
-            return redirect(route('mealTypes.index'));
+            return redirect(route('meal-types.index'));
         }
 
         return view('meal_types.edit')->with('mealType', $mealType);
@@ -91,14 +91,14 @@ class MealTypeController extends AppBaseController
         if (empty($mealType)) {
             Flash::error(__('models/mealTypes.singular').' '.__('messages.not_found'));
 
-            return redirect(route('mealTypes.index'));
+            return redirect(route('meal-types.index'));
         }
 
         $mealType = $this->mealTypeRepository->update($request->all(), $id);
 
         Flash::success(__('messages.updated', ['model' => __('models/mealTypes.singular')]));
 
-        return redirect(route('mealTypes.index'));
+        return redirect(route('meal-types.index'));
     }
 
     /**
@@ -113,13 +113,13 @@ class MealTypeController extends AppBaseController
         if (empty($mealType)) {
             Flash::error(__('models/mealTypes.singular').' '.__('messages.not_found'));
 
-            return redirect(route('mealTypes.index'));
+            return redirect(route('meal-types.index'));
         }
 
         $this->mealTypeRepository->delete($id);
 
         Flash::success(__('messages.deleted', ['model' => __('models/mealTypes.singular')]));
 
-        return redirect(route('mealTypes.index'));
+        return redirect(route('meal-types.index'));
     }
 }

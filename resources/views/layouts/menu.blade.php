@@ -21,3 +21,6 @@
 @include('partials.residence')
 @endrole
 
+@role('dfm')
+@include('partials.dfm')
+@endrole
