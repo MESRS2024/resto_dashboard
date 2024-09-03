@@ -24,3 +24,8 @@
 @role('dfm')
 @include('partials.dfm')
 @endrole
+
+@role('vendeur')
+
+@include('partials.vendeur')
+@endrole

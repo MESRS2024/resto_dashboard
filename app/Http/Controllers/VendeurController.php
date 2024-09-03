@@ -122,4 +122,9 @@ class VendeurController extends AppBaseController
 
         return redirect(route('vendeurs.index'));
     }
+
+    public function stats(Request $request)
+    {
+        return view('vendeurs.stats.index');
+    }
 }

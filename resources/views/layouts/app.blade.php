@@ -56,7 +56,7 @@
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
-                        <a href="#" class="btn btn-default btn-flat">{{ __('auth.profile') }}</a>
+                        <a href="{{route('account.show')}}" class="btn btn-default btn-flat">{{ __('auth.profile') }}</a>
                         <a href="#" class="btn btn-default btn-flat "
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('auth.sign_out') }}

@@ -29,6 +29,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/stats/{page}', [App\Http\Controllers\HomeController::class, 'stats'])->name('stats');
+    Route::get('/account', [App\Http\Controllers\AccountController::class, 'showAccount'])->name('account.show');
+    Route::post('/account', [App\Http\Controllers\AccountController::class, 'updateAccount'])->name('account.update');
+    Route::get('/vendeurs/stats', [App\Http\Controllers\VendeurController::class, 'stats'])->name('vendeurs.stats');
     Route::resource('administration/users', App\Http\Controllers\UserController::class);
     Route::resource('clients', App\Http\Controllers\clientsController::class);
     Route::resource('vendeurs', App\Http\Controllers\VendeurController::class);

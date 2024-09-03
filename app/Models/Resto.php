@@ -27,14 +27,7 @@ class Resto extends Model implements Wallet, WalletFloat
         'dou_code' =>'required|string|max:255',
         'resto_type' =>'required|string|max:255',
         'is_active' =>'required|boolean',
-        'breakfast' =>'required|boolean',
-        'launch' =>'required|boolean',
-        'dinner' =>'required|boolean',
-        'b_start' =>'required|date_format:H:i:s',
-        'b_end' =>'required|date_format:H:i:s',
-        'l_end' =>'required|date_format:H:i:s',
-        'd_start' =>'required|date_format:H:i:s',
-        'd_end' =>'required|date_format:H:i:s'
+
      ];
     protected $guarded = ['id'];
     protected $hidden = [
