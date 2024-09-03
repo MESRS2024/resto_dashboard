@@ -44,7 +44,12 @@ class HomeController extends Controller
         }
         if(Auth::user()->hasRole('dfm'))
         {
-            return (new HomeService())->dfmDashboard($request->month, $request->year);
+            return (new HomeService())->dfmDashboard();
+        }
+
+        if(Auth::user()->hasRole('vendeur'))
+        {
+            return (new HomeService())->vendeurDashboard();
         }
 
     }

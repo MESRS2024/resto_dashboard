@@ -1,7 +1,7 @@
 <!-- Resto Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('resto_id', __('models/vendeurs.fields.resto_id').':') !!}
-    {!! Form::number('resto_id', null, ['class' => 'form-control', 'required']) !!}
+    {!! Form::select('resto_id', $RestoItems,null, ['class' => 'form-control', 'required']) !!}
 </div>
 
 <!-- Name Field -->

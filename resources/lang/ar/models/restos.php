@@ -25,4 +25,9 @@ return [
         'resto_type' => 'نوع المطعم',
         'id_progres' => 'رقم البروغريس',
     ],
+    'active'=>'نشط',
+    'inactive'=>'غير نشط',
+    'integrated'=>'متكامل',
+    'central'=>'مركزي',
+    'residence'=>'اقامة',
 ];

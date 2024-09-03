@@ -45,6 +45,11 @@ class HomeService
 
     public  function  dfmDashboard()
     {
-        return view('Home.dfm.dfmdashboard');
+        return view('Home.dfm.dashboard');
+    }
+
+    public  function  vendeurDashboard()
+    {
+        return view('Home.vendeur.dashboard');
     }
 }

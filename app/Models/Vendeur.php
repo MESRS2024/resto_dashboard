@@ -21,6 +21,7 @@ class Vendeur extends Model implements Wallet, WalletFloat
     protected $hidden = [
         'password',
     ];
+    protected $guarded = [];
 
     public function flixy()
     {

@@ -26,4 +26,6 @@ return [
     'november' => 'نوفمبر',
     'december' => 'ديسمبر',
     'currency' => 'دج',
+    'sum' => 'المجموع',
+    'count' => 'عدد المعاملات',
 ];
