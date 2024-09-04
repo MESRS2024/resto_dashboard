@@ -6,11 +6,9 @@
                 <div class="col-lg-4 col-6">
                     <div class="small-box {{getRandomBackground()}}">
                         <div class="inner">
-
                                 <h3>
-                                    @foreach($data as $d)
-                                        {{$d->number}}
-                                    @endforeach</h3>
+                                    {{collect($data)->sum('number')}}
+                                </h3>
                             <p>{{$key}}</p>
                         </div>
                         <div class="icon">
