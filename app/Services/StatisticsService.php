@@ -52,7 +52,7 @@ class StatisticsService
      * @return \Illuminate\Support\Collection
      * this method will return the number of meals per type for a specific date and dou
      */
-    public function statsPerMealsPerDou($date, $dou_code): array|\Illuminate\Support\Collection
+    public function statsPerMealsPerDou($date): array|\Illuminate\Support\Collection
     {
         $result = [];
         $mealsTypes = MealType::orderBy('id')->get();

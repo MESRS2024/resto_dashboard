@@ -11,21 +11,9 @@ class HomeService
    public function adminDashboard(?int $month, ?int $year)
    {
        $statisticsService = new StatisticsService();
-       //When the user is a dou.
-       $mealsPerDou = $statisticsService
-           ->statsPerMealsPerDou(
-               Carbon::now()->format('Y-m-d'),
-               //'2024-05-15',
-               auth()->user()->code_dou);
 
-       //When the user is Onou.
-
-       //When the user is Residence
-       $mealsPerDou = $statisticsService
-           ->statsPerMealsPerDou(
-               Carbon::now()->format('Y-m-d'),
-               //'2024-05-15',
-               auth()->user()->progres_id);
+       $mealsPerDou = $statisticsService->statsPerMealsPerDou(Carbon::now()->format('Y-m-d'));
+       
        // create a chart for monthly meals
        $month = ($month)?$month: Carbon::now()->month;
 
