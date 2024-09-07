@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DB;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +18,11 @@ class Mealstats extends Model
     public static function getMonthMealsStats($month):collection
     {
         $result = Mealstats::whereMonth('create_date', $month)
-                            ->select('breakfast','launch','dinner', 'create_date', 'count','resto_name')
+                            ->select('create_date',
+                            DB::raw('sum(breakfast) as breakfast'),
+                            DB::raw('sum(launch) as launch'),
+                            DB::raw('sum(dinner) as dinner'))
+                            ->groupBy('create_date')
                             ->get();
         return collect($result);
     }

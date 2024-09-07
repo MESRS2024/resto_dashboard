@@ -30,17 +30,17 @@ class HomeController extends Controller
      */
     public function index(HomePostRequest $request)
     {
-        if(Auth::user()->hasRole('admin'))
+        $month = (isset($request->month))?$request->month: Carbon::now()->month;
+        $year = (isset($request->year))?$request->year: Carbon::now()->year;
+
+        if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('dou'))
         {
-            return (new HomeService())->adminDashboard($request->month, $request->year);
+            return (new HomeService())->adminDashboard($month, $year);
         }
-        if(Auth::user()->hasRole('dou'))
-        {
-            return (new HomeService())->adminDashboard($request->month, $request->year);
-        }
+
         if(Auth::user()->hasRole('residence'))
         {
-            return (new HomeService())->adminDashboard($request->month, $request->year);
+            return (new HomeService())->adminDashboard($month, $year);
         }
         if(Auth::user()->hasRole('dfm'))
         {

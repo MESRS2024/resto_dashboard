@@ -13,7 +13,7 @@ class HomeService
        $statisticsService = new StatisticsService();
 
        $mealsPerDou = $statisticsService->statsPerMealsPerDou(Carbon::now()->format('Y-m-d'));
-       
+
        // create a chart for monthly meals
        $month = ($month)?$month: Carbon::now()->month;
 

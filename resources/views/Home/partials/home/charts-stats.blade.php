@@ -47,7 +47,7 @@
                             <label for="month" class="col-sm-4 col-form-label">{{__('home/dashboard.month')}}</label>
                             <div class="col-sm-8">
                                 <select name="month" id="month" class="form-control">
-                                    <option value="---">--------</option>
+                                    <option value="">--------</option>
                                     <option value="1">{{__('home/dashboard.january')}}</option>
                                     <option value="2">{{__('home/dashboard.february')}}</option>
                                     <option value="3">{{__('home/dashboard.march')}}</option>
@@ -67,7 +67,7 @@
                             <label for="year" class="col-sm-4 col-form-label">{{__('home/dashboard.year')}}</label>
                             <div class="col-sm-8">
                                 <select name="year" id="year" class="form-control">
-                                    <option value="---">--------</option>
+                                    <option value="">--------</option>
                                     @for($i = 2023; $i <= date('Y'); $i++)
                                         <option value="{{$i}}">{{$i}}</option>
                                     @endfor

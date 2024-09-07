@@ -18,21 +18,10 @@ class ChartService
         }else{
             $dataset = Mealstats::getMonthMealsStats(date('m'));
         }
-
+        //dd($dataset);
         $labels = $dataset->unique('create_date')->
         pluck('create_date')->toArray();
-        $Breakfast = [];
-        $launch = [];
-        $dinner = [];
-
-        foreach ($labels as $label){
-            $Breakfast[$label]=$dataset->where('create_date', $label)
-                ->sum('breakfast');
-            $launch[$label] = $dataset->where('create_date', $label)
-                ->sum('launch');
-            $dinner[$label] = $dataset->where('create_date', $label)
-                ->sum('dinner');
-        }
+        list($Breakfast, $launch, $dinner) = $this->CreateDatasets($labels, $dataset);
 
         $chart->labels($labels);
         $chart->dataset(__('home/dashboard.breakfast'), 'bar', array_values($Breakfast))
@@ -45,5 +34,27 @@ class ChartService
             ->color("rgb(132, 99, 255)")
             ->backgroundcolor("rgb(132, 99, 266)");
         return $chart;
+    }
+
+    /**
+     * @param array $labels
+     * @param \Illuminate\Support\Collection $dataset
+     * @return array[]
+     */
+    private function CreateDatasets(array $labels, \Illuminate\Support\Collection $dataset): array
+    {
+        $Breakfast = [];
+        $launch = [];
+        $dinner = [];
+
+        foreach ($labels as $label) {
+            $Breakfast[$label] = $dataset->where('create_date', $label)
+                ->sum('breakfast');
+            $launch[$label] = $dataset->where('create_date', $label)
+                ->sum('launch');
+            $dinner[$label] = $dataset->where('create_date', $label)
+                ->sum('dinner');
+        }
+        return array($Breakfast, $launch, $dinner);
     }
 }

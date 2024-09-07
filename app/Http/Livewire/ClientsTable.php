@@ -34,6 +34,9 @@ class ClientsTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id');
+        $this->setPaginationMethod('simple');
+        $this->setFilterSlideDownDefaultStatusDisabled();
+
     }
 
     public function columns(): array
@@ -71,6 +74,8 @@ class ClientsTable extends DataTableComponent
                 ->sortable()
                 ->searchable(),
             BooleanColumn::make(__('models/clients.fields.duplicate'), 'duplicate')
+                ->setView('common.livewire-tables.clients.duplicate'),
+            BooleanColumn::make(__('models/clients.fields.active'), 'active')
                 ->setView('common.livewire-tables.clients.duplicate'),
             Column::make(__('models/clients.fields.progres_id'), "progres_id")
                 ->sortable()
