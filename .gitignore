@@ -16,3 +16,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/resources/views/vendor/livewire-tables/
+/resources/views/vendor/livewire-ui-modal/
