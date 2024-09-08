@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits\clients;
+namespace App\Traits\Clients;
 
 use App\Models\Client;
 use Flash;

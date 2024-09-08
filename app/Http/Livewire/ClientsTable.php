@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Traits\clients\WithClientsActions;
+use App\Traits\Clients\WithClientsActions;
 use App\Models\Dfm;
 use Illuminate\Database\Eloquent\Builder;
 use Laracasts\Flash\Flash;
