@@ -7,7 +7,7 @@
                     <div class="small-box {{getRandomBackground()}}">
                         <div class="inner">
                                 <h3>
-                                    {{collect($data)->sum('number')}}
+                                    {{$data}}
                                 </h3>
                             <p>{{$key}}</p>
                         </div>

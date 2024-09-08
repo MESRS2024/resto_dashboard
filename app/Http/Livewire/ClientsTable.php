@@ -2,26 +2,21 @@
 
 namespace App\Http\Livewire;
 
+use App\Traits\Clients\WithClientsActions;
 use App\Models\Dfm;
 use Illuminate\Database\Eloquent\Builder;
 use Laracasts\Flash\Flash;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Client;
-use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
+
 
 class ClientsTable extends DataTableComponent
 {
+    use WithClientsActions;
     protected $model = Client::class;
 
     protected $listeners = ['deleteRecord' => 'deleteRecord'];
-
-    public function deleteRecord($id)
-    {
-        Client::find($id)->delete();
-        Flash::success(__('messages.deleted', ['model' => __('models/clients.singular')]));
-        $this->emit('refreshDatatable');
-    }
 
     public function builder(): Builder
     {
@@ -34,6 +29,9 @@ class ClientsTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id');
+        $this->setPaginationMethod('simple');
+        $this->setFilterSlideDownDefaultStatusDisabled();
+
     }
 
     public function columns(): array
@@ -70,11 +68,24 @@ class ClientsTable extends DataTableComponent
                 )
                 ->sortable()
                 ->searchable(),
-            BooleanColumn::make(__('models/clients.fields.duplicate'), 'duplicate')
-                ->setView('common.livewire-tables.clients.duplicate'),
-            Column::make(__('models/clients.fields.progres_id'), "progres_id")
-                ->sortable()
-                ->searchable(),
+            Column::make(__('models/clients.fields.duplicate'), 'duplicate')
+                ->format(
+                    fn($value, $row, Column $column) => view('common.livewire-tables.clients.duplicate', [
+                        'status' => $row->duplicate,
+                        'successValue' => $row->duplicate===1,
+                        'action'=>'switchDuplicate',
+                        'recordId' => $row->id,
+                    ])
+                ),
+            Column::make(__('models/clients.fields.active'), 'active')
+                ->format(
+                    fn($value, $row, Column $column) => view('common.livewire-tables.clients.duplicate', [
+                        'status' => $row->active,
+                        'successValue' => $row->active,
+                        'action'=>'switchActive',
+                        'recordId' => $row->id,
+                    ])
+                ),
             Column::make(__('crud.actions'), 'id')
                 ->format(
                     fn($value, $row, Column $column) => view('common.livewire-tables.actions', [

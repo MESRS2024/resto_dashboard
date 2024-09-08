@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/account', [App\Http\Controllers\AccountController::class, 'updateAccount'])->name('account.update');
     Route::get('/vendeurs/stats', [App\Http\Controllers\VendeurController::class, 'stats'])->name('vendeurs.stats');
     Route::resource('administration/users', App\Http\Controllers\UserController::class);
-    Route::resource('clients', App\Http\Controllers\clientsController::class);
+    Route::resource('clients', App\Http\Controllers\ClientsController::class);
     Route::resource('vendeurs', App\Http\Controllers\VendeurController::class);
     Route::resource('dfms', App\Http\Controllers\DfmController::class);
     Route::resource('restos', App\Http\Controllers\RestoController::class);

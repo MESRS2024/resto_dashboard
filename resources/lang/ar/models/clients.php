@@ -14,6 +14,7 @@ return [
         'deleted_at' => 'تاريخ الحذف',
         'code' => 'كود',
         'duplicate' => 'مكرر',
+        'active' => 'نشط',
         'progres_id' => 'رقم البروغريس',
     ],
     'types' => [
