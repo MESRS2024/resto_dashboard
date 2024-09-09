@@ -80,6 +80,7 @@ class RestosTable extends DataTableComponent
                     fn($value, $row, Column $column) => view('common.livewire-tables.actions', [
                         'showUrl' => route('restos.show', $row->id),
                         'editUrl' => route('restos.edit', $row->id),
+                        'passwordUrl' => route('restos.password', $row->id),
                         'recordId' => $row->id,
                         'title' => $row->name,
                     ])

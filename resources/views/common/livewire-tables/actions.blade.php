@@ -4,6 +4,12 @@
        class='btn btn-default btn-xs' onclick="loadeditform('{{ $showUrl }}', '  {{__('crud.show') . ' ' . $title }}')">
         <i class="fa fa-eye"></i>
     </a>
+    @if(isset($passwordUrl))
+        <a href="#popUp" href="{{ $passwordUrl }}"
+           class='btn btn-default btn-xs' onclick="loadeditform('{{ $passwordUrl }}', '  {{__('crud.show') . ' ' . $title }}')">
+            <i class="fa fa-user-secret"></i>
+        </a>
+    @endif
     <a href="#popUp" href="{{ $editUrl }}"
         class='btn btn-default btn-xs' onclick="loadeditform('{{ $editUrl }}', '{{__('crud.edit') . ' ' . $title }}')">
         <i class="fa fa-edit"></i>
