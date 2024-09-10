@@ -16,11 +16,7 @@
     <p>{{ $vendeur->phone }}</p>
 </div>
 
-<!-- Password Field -->
-<div class="col-sm-12">
-    {!! Form::label('password', __('models/vendeurs.fields.password').':') !!}
-    <p>{{ $vendeur->password }}</p>
-</div>
+
 
 <!-- Device Id Field -->
 <div class="col-sm-12">

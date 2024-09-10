@@ -127,4 +127,35 @@ class VendeurController extends AppBaseController
     {
         return view('vendeurs.stats.index');
     }
+
+    public function editPassword($id)
+    {
+        $vendeur = $this->vendeurRepository->find($id);
+
+        if (empty($vendeur)) {
+            Flash::error(__('models/vendeurs.singular').' '.__('messages.not_found'));
+
+            return redirect(route('vendeurs.index'));
+        }
+
+        return view('vendeurs.editPassword')->with('vendeur', $vendeur);
+    }
+
+    public function editPasswordStore($id, Request $request)
+    {
+        $vendeur = $this->vendeurRepository->find($id);
+
+        if (empty($vendeur)) {
+            Flash::error(__('models/vendeurs.singular').' '.__('messages.not_found'));
+
+            return redirect(route('vendeurs.index'));
+        }
+
+        $vendeur->password = bcrypt($request->password);
+        $vendeur->save();
+        
+        Flash::success(__('messages.updated', ['model' => __('models/vendeurs.singular')]));
+
+        return redirect(route('vendeurs.index'));
+    }
 }

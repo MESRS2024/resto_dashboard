@@ -11,6 +11,7 @@ class AccountService
     {
     }
 
+
     public function updatePassword(User $user, ?string $password, ?string $password_confirmation, ?string $password_old)
     {
         if ($password !== $password_confirmation) {
@@ -20,7 +21,7 @@ class AccountService
         if (!Hash::check($password_old, $user->password)) {
             return ['message' => 'كلمة المرور القديمة غير صحيحة', 'status' => false];
         }
-        # update password
+        #update password
         // if hasRole vendeur chane vendeur password in table vendeurs
         if ($user->hasRole('vendeur')) {
             $vendeur = Vendeur::where('phone', $user->email)->first();

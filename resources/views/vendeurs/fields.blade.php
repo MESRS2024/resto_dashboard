@@ -16,11 +16,6 @@
     {!! Form::text('phone', null, ['class' => 'form-control', 'required', 'maxlength' => 255, 'maxlength' => 255, 'maxlength' => 255]) !!}
 </div>
 
-<!-- password Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('password', __('models/vendeurs.fields.password').':') !!}
-    {!! Form::password('password', ['class' => 'form-control', 'required', 'maxlength' => 255, 'maxlength' => 255, 'maxlength' => 255]) !!}
-</div>
 
 <!-- Device Id Field -->
 <div class="form-group col-sm-6">

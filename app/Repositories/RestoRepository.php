@@ -35,4 +35,5 @@ class RestoRepository extends BaseRepository
     {
         return Resto::class;
     }
+
 }

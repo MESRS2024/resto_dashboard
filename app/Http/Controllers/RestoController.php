@@ -122,4 +122,35 @@ class RestoController extends AppBaseController
 
         return redirect(route('restos.index'));
     }
+
+
+    public function editPassword($id)
+    {
+        $resto = $this->restoRepository->find($id);
+
+        if (empty($resto)) {
+            Flash::error(__('models/restos.singular').' '.__('messages.not_found'));
+
+            return redirect(route('restos.index'));
+        }
+
+        return view('restos.editPassword')->with('resto', $resto);
+    }
+
+    public function editPasswordStore($id, Request $request)
+    {
+        $resto = $this->restoRepository->find($id);
+
+        if (empty($resto)) {
+            Flash::error(__('models/restos.singular').' '.__('messages.not_found'));
+
+            return redirect(route('restos.index'));
+        }
+        $resto->password = bcrypt($request->password);
+        $resto->save();
+
+        Flash::success(__('messages.updated', ['model' => __('models/restos.singular')]));
+
+        return redirect(route('restos.index'));
+    }
 }

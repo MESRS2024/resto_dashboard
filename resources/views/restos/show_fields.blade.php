@@ -10,11 +10,7 @@
     <p>{{ $resto->code }}</p>
 </div>
 
-<!-- Password Field -->
-<div class="col-sm-12">
-    {!! Form::label('password', __('models/restos.fields.password').':') !!}
-    <p>{{ $resto->password }}</p>
-</div>
+
 
 <!-- Is Active Field -->
 <div class="col-sm-12">
