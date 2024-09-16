@@ -58,6 +58,9 @@ class HomeController extends Controller
     public function stats(HomePostRequest $request)
     {
         $page = $request->page;
-        return view('Home.stats');
+        return view('Home.stats',
+            [
+                'page' => $page
+            ]);
     }
 }

@@ -5,9 +5,10 @@
                 <div class="col-lg-4 col-6">
                     <div class="small-box {{getRandomBackground()}}">
                         <div class="inner">
+
                             <h3>
                                 {{
-                                    formatBalance(auth()->user()->wallet->balance/100) .
+                                    formatBalance($vender->wallet->balance/100) .
                                     ' ' . __('home/dashboard.currency')
                                 }}
                             </h3>

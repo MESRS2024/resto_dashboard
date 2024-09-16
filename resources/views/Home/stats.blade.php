@@ -6,5 +6,13 @@
             {{Auth::user()->name_en}}
         </h1>
     </div>
-    @include('Home.partials.all_by_resto')
+   @switch($page)
+       @case('todays_stats')
+           @include('Home.partials.todays_stats')
+           @break
+       @case('home')
+           @include('Home.partials.all_by_resto')
+              @break
+   @endswitch
+
 @endsection

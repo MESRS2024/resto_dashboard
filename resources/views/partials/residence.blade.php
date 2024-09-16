@@ -7,6 +7,13 @@
     </a>
     <ul class="nav nav-treeview" style="display: block;">
         <li class="nav-item">
+            <a href="{{route('stats', ['page'=>'todays_stats'])}}" class="nav-link {{Request::is('stats/todays_stats') ? 'active' : '' }} ">
+                <i class="nav-icon fas fa-chart-bar"></i>
+                <p>@lang('models/stat.todays_stats')
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="{{route('stats', ['page'=>'home'])}}" class="nav-link {{Request::is('stats/home') ? 'active' : '' }} ">
                 <i class="nav-icon fas fa-chart-bar"></i>
                 <p>@lang('models/stat.all_by_resto')

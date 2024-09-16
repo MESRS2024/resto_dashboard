@@ -2,6 +2,7 @@
 namespace App\Services\homeServices;
 use App\Charts\MonthlyMeals;
 use App\Models\Mealstats;
+use App\Models\Vendeur;
 use App\Services\ChartService;
 use App\Services\StatisticsService;
 use Illuminate\Support\Carbon;
@@ -38,6 +39,9 @@ class HomeService
 
     public  function  vendeurDashboard()
     {
-        return view('Home.vendeur.dashboard');
+        $vender = Vendeur::where ('phone', auth()->user()->email)
+                ->with('wallet')->first();
+        return view('Home.vendeur.dashboard'
+            ,['vender'=>$vender]);
     }
 }
