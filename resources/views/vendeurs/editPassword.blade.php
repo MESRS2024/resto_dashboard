@@ -4,11 +4,11 @@
 
         <div class="card">
 
-            {!! Form::model($resto, ['route' => ['restos.password.store', $resto->id], 'method' => 'patch']) !!}
+            {!! Form::model($vendeur, ['route' => ['vendeurs.password.store', $vendeur->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
                 <div class="row">
-                    @include('restos.password')
+                    @include('vendeurs.password')
                 </div>
             </div>
 

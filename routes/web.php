@@ -32,13 +32,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/account', [App\Http\Controllers\AccountController::class, 'showAccount'])->name('account.show');
     Route::post('/account', [App\Http\Controllers\AccountController::class, 'updateAccount'])->name('account.update');
     Route::get('/vendeurs/stats', [App\Http\Controllers\VendeurController::class, 'stats'])->name('vendeurs.stats');
+    Route::get('/mealstats/export', [App\Http\Controllers\HomeController::class, 'exportdata'])->name('stats.export');
 
     Route::resource('administration/users', App\Http\Controllers\UserController::class);
     Route::resource('clients', App\Http\Controllers\ClientsController::class);
-    Route::get('/edit/{id}/password', [App\Http\Controllers\VendeurController::class, 'editPassword'])->name('vendeur.password');
-    Route::patch('/edit/{id}/password', [App\Http\Controllers\VendeurController::class, 'editPasswordStore'])->name('vendeur.password.store');
 
+    Route::get('/vendeurs/edit/{id}/password', [App\Http\Controllers\VendeurController::class, 'editPassword'])->name('vendeurs.password');
+    Route::patch('/vendeurs/edit/{id}/password', [App\Http\Controllers\VendeurController::class, 'editPasswordStore'])->name('vendeurs.password.store');
     Route::resource('vendeurs', App\Http\Controllers\VendeurController::class);
+
     Route::resource('dfms', App\Http\Controllers\DfmController::class);
     Route::get('/edit/{id}/password', [App\Http\Controllers\RestoController::class, 'editPassword'])->name('restos.password');
     Route::patch('/edit/{id}/password', [App\Http\Controllers\RestoController::class, 'editPasswordStore'])->name('restos.password.store');

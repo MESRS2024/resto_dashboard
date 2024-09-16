@@ -10,7 +10,7 @@
     {!! Form::text('code', null, ['class' => 'form-control', 'required', 'maxlength' => 255, 'maxlength' => 255, 'maxlength' => 255]) !!}
 </div>
 
-
+{!! Form::hidden('password', 'nothing') !!}
 
 <!-- Is Active Field -->
 <div class="form-group col-sm-6">

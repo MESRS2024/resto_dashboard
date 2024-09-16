@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Charts\MonthlyMeals;
+use App\Exports\StatsExport;
 use App\Http\Requests\HomePostRequest;
 use App\Services\homeServices\HomeService;
 use App\Services\StatisticsService;
@@ -10,6 +11,7 @@ use Auth;
 use App\Services\ChartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HomeController extends Controller
 {
@@ -42,6 +44,7 @@ class HomeController extends Controller
         {
             return (new HomeService())->adminDashboard($month, $year);
         }
+
         if(Auth::user()->hasRole('dfm'))
         {
             return (new HomeService())->dfmDashboard();
@@ -58,6 +61,16 @@ class HomeController extends Controller
     public function stats(HomePostRequest $request)
     {
         $page = $request->page;
-        return view('Home.stats');
+        return view('Home.stats',
+            [
+                'page' => $page
+            ]);
+    }
+
+
+    public function exportdata()
+    {
+
+        return Excel::download(new StatsExport, 'stats.xlsx');
     }
 }
