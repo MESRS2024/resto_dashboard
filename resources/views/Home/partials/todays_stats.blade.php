@@ -6,6 +6,7 @@
 
     <div class="card">
         <div class="card-body">
+
             @livewire('meal-today-table', [])
         </div>
     </div>

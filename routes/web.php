@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/account', [App\Http\Controllers\AccountController::class, 'showAccount'])->name('account.show');
     Route::post('/account', [App\Http\Controllers\AccountController::class, 'updateAccount'])->name('account.update');
     Route::get('/vendeurs/stats', [App\Http\Controllers\VendeurController::class, 'stats'])->name('vendeurs.stats');
+    Route::get('/mealstats/export', [App\Http\Controllers\HomeController::class, 'exportdata'])->name('stats.export');
 
     Route::resource('administration/users', App\Http\Controllers\UserController::class);
     Route::resource('clients', App\Http\Controllers\ClientsController::class);

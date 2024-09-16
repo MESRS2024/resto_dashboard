@@ -19,6 +19,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravolt/avatar": "^5.1",
+        "maatwebsite/excel": "^3.1",
         "plank/laravel-mediable": "^5.9",
         "rappasoft/laravel-livewire-tables": "v2.15.0",
         "wire-elements/modal": "^1.0"
