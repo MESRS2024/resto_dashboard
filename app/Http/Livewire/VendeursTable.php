@@ -70,6 +70,7 @@ class VendeursTable extends DataTableComponent
                     fn($value, $row, Column $column) => view('common.livewire-tables.actions', [
                         'showUrl' => route('vendeurs.show', $row->id),
                         'editUrl' => route('vendeurs.edit', $row->id),
+                        'passwordUrl' => route('vendeurs.password', $row->id),
                         'flixyUrl' => route('moveSoleToSeller.create', $row->id),
                         'recordId' => $row->id,
                         'title' => $row->name,

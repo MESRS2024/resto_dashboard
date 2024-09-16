@@ -6,8 +6,10 @@ use App\Http\Requests\CreateVendeurRequest;
 use App\Http\Requests\UpdateVendeurRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\VendeurRepository;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\DB;
 
 class VendeurController extends AppBaseController
 {
@@ -151,9 +153,14 @@ class VendeurController extends AppBaseController
             return redirect(route('vendeurs.index'));
         }
 
-        $vendeur->password = bcrypt($request->password);
-        $vendeur->save();
-        
+        DB::transaction(function () use ($request, $vendeur) {
+            $vendeur->password = bcrypt($request->password);
+            $vendeur->save();
+            $user = User::where('email', $vendeur->phone)->first();
+            $user->password = bcrypt($request->password);
+            $user->save();
+        });
+
         Flash::success(__('messages.updated', ['model' => __('models/vendeurs.singular')]));
 
         return redirect(route('vendeurs.index'));

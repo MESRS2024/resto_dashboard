@@ -12,6 +12,7 @@
 
 
 
+
 <!-- Is Active Field -->
 <div class="col-sm-12">
     {!! Form::label('is_active', __('models/restos.fields.is_active').':') !!}
