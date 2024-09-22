@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dfm;
 use App\Http\Requests\FlixyRequests\{clientBalanceRequest,
     CountTransactionPerDouRequest,
     CountTransactionRequest,
@@ -89,7 +90,10 @@ class FlixyController extends Controller
                 return redirect(route('vendeurs.index'));
             };
 
-        return (new VendeurService())->execute(auth()->user(), $reSeller, $solde);
+        $dfm = Dfm::where ('code', auth()->user()->email)
+            ->with('wallet')->first();
+
+        return (new VendeurService())->execute($dfm, $reSeller, $solde);
 
     }
     public function countTransactions(CountTransactionRequest $request)

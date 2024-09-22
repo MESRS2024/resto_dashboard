@@ -8,7 +8,7 @@
 
                             <h3>
                             {{
-                                formatBalance(auth()->user()->wallet->balance/100) .
+                                formatBalance($dfm->wallet->balance/100) .
                                 ' ' . __('home/dashboard.currency')
                             }}
                             <p>{{__('models/dfms.balance')}}</p>

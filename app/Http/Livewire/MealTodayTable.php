@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Mealstats;
+
 use App\Models\Mealstatsperday;
-use Illuminate\Database\Eloquent\Builder;
+
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Filters\DateFilter;
+
 
 class MealTodayTable extends DataTableComponent
 {
