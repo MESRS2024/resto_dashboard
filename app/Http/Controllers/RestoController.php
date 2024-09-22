@@ -44,6 +44,8 @@ class RestoController extends AppBaseController
 
         $resto = $this->restoRepository->create($input);
 
+
+
         Flash::success(__('messages.saved', ['model' => __('models/restos.singular')]));
 
         return redirect(route('restos.index'));
@@ -96,6 +98,8 @@ class RestoController extends AppBaseController
 
         $resto = $this->restoRepository->update($request->all(), $id);
 
+
+
         Flash::success(__('messages.updated', ['model' => __('models/restos.singular')]));
 
         return redirect(route('restos.index'));
@@ -117,6 +121,8 @@ class RestoController extends AppBaseController
         }
 
         $this->restoRepository->delete($id);
+
+
 
         Flash::success(__('messages.deleted', ['model' => __('models/restos.singular')]));
 

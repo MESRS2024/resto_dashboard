@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateVendeurRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\VendeurRepository;
 use App\Models\User;
+use Bavix\Wallet\Models\Wallet;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\DB;
@@ -44,7 +46,27 @@ class VendeurController extends AppBaseController
     {
         $input = $request->all();
 
-        $vendeur = $this->vendeurRepository->create($input);
+        $input['password'] = bcrypt(Carbon::now()->timestamp);
+
+        DB::transaction(function () use ($input) {
+            $vendeur = $this->vendeurRepository->create($input);
+
+            $user = User::create([
+                'name'=>$vendeur->name,
+                'email'=>$vendeur->phone,
+                'id_vendeur'=>$vendeur->id,
+                'password'=>bcrypt($input['password'])
+            ]);
+
+            $role = config('roles.models.role')::where('name', '=', 'vendeur')->first();
+            $user->attachRole($role);
+
+            $vendeur->wallet()->create([
+                'name'=>'Default Wallet',
+                'balance'=>0
+            ]);
+        });
+
 
         Flash::success(__('messages.saved', ['model' => __('models/vendeurs.singular')]));
 
