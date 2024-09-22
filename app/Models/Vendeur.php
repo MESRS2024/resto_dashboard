@@ -23,6 +23,11 @@ class Vendeur extends Model implements Wallet, WalletFloat
     ];
     protected $guarded = [];
 
+    static $rules = [
+        'name' => 'required',
+        'phone' => 'required',
+    ];
+
     public function flixy()
     {
         return $this->hasMany(Flixy::class);

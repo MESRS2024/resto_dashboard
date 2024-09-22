@@ -73,10 +73,13 @@ class ViewServiceProvider extends ServiceProvider
 
         //********* Vendeur Views
         View::composer(['vendeurs.fields'], function ($view) {
-            $RestoItems = $this->nullSelected +
-                Cache::remember('RestoItems', 60*60*24, function () {
-                    return  Resto::all()->pluck('name', 'id')->toArray();
-                });
+            $RestoItems = $this->nullSelected ;
+                $restos =  Resto::get();
+
+            $RestoItems += $restos->map(function ($resto, $RestoItems) {
+                    return [$resto->id => $resto->name . ' - ' . $resto->dou_code];
+                })->toArray();
+
             $view->with('RestoItems', $RestoItems);
         });
 

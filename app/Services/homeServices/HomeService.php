@@ -1,6 +1,7 @@
 <?php
 namespace App\Services\homeServices;
 use App\Charts\MonthlyMeals;
+use App\Models\Dfm;
 use App\Models\Mealstats;
 use App\Models\Vendeur;
 use App\Services\ChartService;
@@ -34,7 +35,9 @@ class HomeService
 
     public  function  dfmDashboard()
     {
-        return view('Home.dfm.dashboard');
+        $dfm = Dfm::where ('code', auth()->user()->email)
+            ->with('wallet')->first();
+        return view('Home.dfm.dashboard', ['dfm'=>$dfm]);
     }
 
     public  function  vendeurDashboard()
