@@ -92,6 +92,7 @@ class FlixyController extends Controller
 
         $dfm = Dfm::where('code', auth()->user()->email)->with('wallet')->first();
 
+
         return (new VendeurService())->execute($dfm, $reSeller, $solde);
 
     }
