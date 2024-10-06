@@ -9,8 +9,10 @@ class VendeurService
 {
     private function isEnoughBalance($seller, $amount): bool
     {
-        if($seller->hasRole('dfm_onou'))
-            return true;
+        if(get_class($seller) == 'App\Models\User'){
+            if($seller->hasRole('dfm_onou'))
+                return true;
+        }
         return ($seller->balance >= $amount);
     }
 
@@ -45,8 +47,10 @@ class VendeurService
     private function hundle($seller, $client, $solde)
     {
         try {
-            if ($seller->hasRole('dfm_onou'))
-                return $this->moveSolveOnou($seller, $client, $solde);
+            if(get_class($seller) == 'App\Models\User'){
+                if ($seller->hasRole('dfm_onou'))
+                    return $this->moveSolveOnou($seller, $client, $solde);
+            }
 
             if(get_class($seller) == 'App\Models\Dfm')
                 return $this->moveSolveDFM($seller, $client, $solde);
