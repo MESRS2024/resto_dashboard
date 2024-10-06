@@ -55,6 +55,11 @@ class HomeController extends Controller
             return (new HomeService())->vendeurDashboard();
         }
 
+        if(Auth::user()->hasRole('dfm_onou'))
+        {
+            return (new HomeService())->dfmOnouDashboard();
+        }
+
     }
 
 

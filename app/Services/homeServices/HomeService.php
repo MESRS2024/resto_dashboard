@@ -40,6 +40,11 @@ class HomeService
         return view('Home.dfm.dashboard', ['dfm'=>$dfm]);
     }
 
+    public  function  dfmOnouDashboard()
+    {
+        return view('Home.dfm.dashboard', ['dfm'=>auth()->user()]);
+    }
+
     public  function  vendeurDashboard()
     {
         $vender = Vendeur::where ('phone', auth()->user()->email)

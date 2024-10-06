@@ -3,7 +3,6 @@
 namespace App\Http\Requests\FlixyRequests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class FlixyByPhoneRequest extends FormRequest
 {

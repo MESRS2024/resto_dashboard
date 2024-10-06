@@ -9,6 +9,8 @@ class VendeurService
 {
     private function isEnoughBalance($seller, $amount): bool
     {
+        if($seller->hasRole('dfm_onou'))
+            return true;
         return ($seller->balance >= $amount);
     }
 
@@ -16,6 +18,7 @@ class VendeurService
     {
 
         try {
+
             if (!$client)
             {
                 Flash::error(__('messages.not_found'));
@@ -25,6 +28,7 @@ class VendeurService
 
             if (!$this->isEnoughBalance($seller,$amount))
             {
+
                 Flash::error(__('messages.Enough_balance'));
 
                 return redirect(route('vendeurs.index'));
@@ -41,8 +45,14 @@ class VendeurService
     private function hundle($seller, $client, $solde)
     {
         try {
-            if(get_class($seller) == 'App\Models\Dfm') return $this->moveSolveDFM($seller, $client, $solde);
-            else return $this->moveSolveResller($seller, $client, $solde);
+            if ($seller->hasRole('dfm_onou'))
+                return $this->moveSolveOnou($seller, $client, $solde);
+
+            if(get_class($seller) == 'App\Models\Dfm')
+                return $this->moveSolveDFM($seller, $client, $solde);
+
+            else
+                return $this->moveSolveResller($seller, $client, $solde);
 
         }catch (\Exception $exception){
             return $this->ErrorMessage($seller,$exception->getMessage());
@@ -69,12 +79,21 @@ class VendeurService
         return redirect()->route('vendeurs.index')->with('success', 'تمت العملية بنجاح');
     }
 
+    private function moveSolveOnou($seller, $client, $solde)
+    {
+        $seller->forceTransfer($client,$solde, ['action' => 'Rechargement du solde','admin_type' => 'onou','admin_id' => auth()->user()->id,'owner_type' => 'DFM','owner_id' => $client->id]);
+        Flash::success(__('messages.success'));
+        return redirect()->route('dfms.index');
+    }
+
     /*
   * @return error message
   */
     private function ErrorMessage($client, $message)
     {
-         return redirect()->route('vendeurs.index')->with('error', $message);
+        Flash::error($message);
+        return redirect(route('vendeurs.index'));
+
     }
 
 

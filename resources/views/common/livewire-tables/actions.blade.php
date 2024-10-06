@@ -26,3 +26,10 @@
     <i class="fa fa-plus"></i> {{__('crud.flixy')}}
 </a>
 @endrole
+
+@role('dfm_onou')
+<a href="#popUp" href="{{ $flixyDfmUrl }}"
+   class='btn btn-success' onclick="loadeditform('{{ $flixyDfmUrl }}', '{{__('crud.flixy') . ' ' . $title }}')">
+    <i class="fa fa-plus"></i> {{__('crud.flixy')}}
+</a>
+@endrole
