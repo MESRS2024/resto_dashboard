@@ -12,6 +12,10 @@
 
 @endrole
 
+@role('dfm_onou')
+@include('partials.dou')
+@endrole
+
 @role('dou')
 @include('partials.residence')
 @include('partials.dou')

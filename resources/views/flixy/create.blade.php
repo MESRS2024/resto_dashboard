@@ -4,7 +4,7 @@
 
         <div class="card">
 
-            {!! Form::open(['route' => 'moveSoleToSeller.store']) !!}
+            {!! Form::open(['route' => $formRoute]) !!}
 
             <div class="card-body">
 

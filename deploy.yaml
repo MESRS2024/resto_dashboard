@@ -9,7 +9,7 @@ config:
 hosts:
   production:
     remote_user: root
-    hostname: '10.10.10.40'
+    hostname: '10.10.10.50'
     deploy_path: '/var/www/resto_dashboard'
     composer_options: '--verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader'
     shared_files:

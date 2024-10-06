@@ -63,6 +63,7 @@ class DfmsTable extends DataTableComponent
                     fn($value, $row, Column $column) => view('common.livewire-tables.actions', [
                         'showUrl' => route('dfms.show', $row->id),
                         'editUrl' => route('dfms.edit', $row->id),
+                        'flixyDfmUrl' => route('moveSoleToDFM.create', $row->id),
                         'recordId' => $row->id,
                         'title' => $row->name,
                     ])

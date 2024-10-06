@@ -52,5 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/moveSoleToSeller',[FlixyController::class, 'moveSoleToSellerCreate'])->name('moveSoleToSeller.create');
     Route::post('/moveSoleToSeller',[FlixyController::class, 'moveSoleToSeller'])->name('moveSoleToSeller.store');
+    Route::get('/moveSoleToDFM',[FlixyController::class, 'moveSoleToDFMCreate'])->name('moveSoleToDFM.create');
+    Route::post('/moveSoleToDFM',[FlixyController::class, 'moveSoleToDFM'])->name('moveSoleToDFM.store');
     Route::post('/transactionsPerDateDouDFM', [FlixyController::class, 'transactionsPerDateDouDFM']);
 });

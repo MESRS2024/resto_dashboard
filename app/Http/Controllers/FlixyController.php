@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dfm;
+use App\Models\User;
 use App\Http\Requests\FlixyRequests\{clientBalanceRequest,
     CountTransactionPerDouRequest,
     CountTransactionRequest,
@@ -71,12 +72,11 @@ class FlixyController extends Controller
     }
 
     public function moveSoleToSellerCreate(){
-        return view('flixy.create');
+        return view('flixy.create')->with('formRoute', 'moveSoleToSeller.store');
     }
     public function moveSoleToSeller(FlixyByPhoneRequest $request)
     {
         $solde =$request->input('solde') * 100;
-
 
         $reSeller = (
                 new DfmService())->getSeller($request->input('phone'),
@@ -90,8 +90,7 @@ class FlixyController extends Controller
                 return redirect(route('vendeurs.index'));
             };
 
-        $dfm = Dfm::where ('code', auth()->user()->email)
-            ->with('wallet')->first();
+        $dfm = Dfm::where('code', auth()->user()->email)->with('wallet')->first();
 
         return (new VendeurService())->execute($dfm, $reSeller, $solde);
 
@@ -130,6 +129,32 @@ class FlixyController extends Controller
             )
         );
     }
+
+    public function moveSoleToDFMCreate(){
+        return view('flixy.create')->with('formRoute', 'moveSoleToDFM.store');;
+    }
+
+    public function moveSoleToDFM(FlixyByPhoneRequest $request)
+    {
+        $solde =$request->input('solde') * 100;
+
+
+        $dfm = Dfm::where ('code', $request->input('phone'))->with('wallet')->first();
+
+        if(!$dfm)
+        {
+            Flash::error(__('models/dfms.singular').' '.__('messages.not_found'));
+
+            return redirect(route('dfms.index'));
+        }
+
+        $seller = User::where('email', auth()->user()->email)->with('wallet')->first();
+
+        return (new VendeurService())->execute($seller, $dfm, $solde);
+
+    }
+
+
 
     public function transactionsPerDateDouDFM()
     {
