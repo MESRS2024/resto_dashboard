@@ -19,8 +19,8 @@ class Mealstatsperday extends Model
     {
         return $query->select('dou_code','meal_type_id',
                     DB::raw('sum(number_of_repas) as number'))
-                    ->whereDate('created_at', '=', DATE($date))
-                    ->groupBy(['dou_code','meal_type_id']);
+                    ->whereDate('created_at', '=', DATE($date));
+                    //->groupBy(['dou_code','meal_type_id']);
 
     }
 
@@ -28,8 +28,8 @@ class Mealstatsperday extends Model
     {
         return $query->select('meal_type_id',
             DB::raw('sum(number_of_repas) as number'))
-            ->whereDate('created_at', '=', DATE($date))
-            ->groupBy(['meal_type_id']);
+            ->whereDate('created_at', '=', DATE($date));
+            //->groupBy(['meal_type_id']);
 
     }
 

@@ -60,20 +60,21 @@ class StatisticsService
             //if the user is a dou then we will get the number of meals per type for the current date and the connected dou
             if(auth()->user()->hasRole('dou'))
                     $result[$mealType->name] =  Mealstatsperday::byMealsTodayDou($date)
-                                                ->where('meal_type_id', $mealType->id)
+                                                //->where('meal_type_id', $mealType->id)
                                                 ->sum($mealType->column_name);
+
 
             //if the user is an onou or admin then we will get the number of meals per type for the current date and the connected
             if(auth()->user()->hasRole('onou') || auth()->user()->hasRole('admin'))
                     $result[$mealType->name] = Mealstatsperday::byMealsTodayOnou($date)
-                                                 ->where('meal_type_id', $mealType->id)
+                                                 //->where('meal_type_id', $mealType->id)
                                                  ->sum($mealType->column_name);
-
+            //dd($mealType->column_name);
 
             //if the user is a residence or admin then we will get the number of meals per type for the current date and the connected
             if(auth()->user()->hasRole('residence'))
                 $result[$mealType->name] = Mealstatsperday::byMealsTodayResidence($date)
-                                                ->where('meal_type_id', $mealType->id)
+                                                //->where('meal_type_id', $mealType->id)
                                                 ->sum($mealType->column_name);
         }
         return  $result;
