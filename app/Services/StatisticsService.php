@@ -3,11 +3,9 @@
 namespace App\Services;
 
 use App\Models\Mealstatsperday;
-use App\Services\RestoService;
 use App\Models\Meal;
 use App\Models\MealType;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class StatisticsService

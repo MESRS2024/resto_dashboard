@@ -17,7 +17,7 @@ class Mealstatsperday extends Model
 
     public function scopeByMealsTodayDou($query, $date)
     {
-        return $query->select('dou_code','meal_type_id',
+        return $query->select('dou_code',
                     DB::raw('sum(number_of_repas) as number'))
                     ->whereDate('created_at', '=', DATE($date));
                     //->groupBy(['dou_code','meal_type_id']);
@@ -35,10 +35,10 @@ class Mealstatsperday extends Model
 
     public function scopeByMealsTodayResidence($query, $date)
     {
-        return $query->select('id_progres','meal_type_id',
+        return $query->select('id_progres',
             DB::raw('sum(number_of_repas) as number'))
                  ->whereDate('created_at', '=', DATE($date))
-                 ->groupBy(['id_progres','meal_type_id']);
+                 ->groupBy(['id_progres']);
 
     }
 
