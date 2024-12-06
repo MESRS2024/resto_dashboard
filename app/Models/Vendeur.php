@@ -46,4 +46,9 @@ class Vendeur extends Model implements Wallet, WalletFloat
     {
         return $query->whereIn('resto_id', Resto::select('id')->where('dou_code', $dou_code));
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'code', 'email');
+    }
 }

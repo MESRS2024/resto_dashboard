@@ -27,6 +27,9 @@ Auth::routes(['register'=>false]);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
+    Route::get('/2fa', 'App\Http\Controllers\TwoFaController@index')->name('2fa.index');
+    Route::post('/2fa', 'App\Http\Controllers\TwoFaController@verify')->name('2fa.verify');
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/stats/{page}', [App\Http\Controllers\HomeController::class, 'stats'])->name('stats');
     Route::get('/account', [App\Http\Controllers\AccountController::class, 'showAccount'])->name('account.show');

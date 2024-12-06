@@ -37,6 +37,8 @@ class HomeService
     {
         $dfm = Dfm::where ('code', auth()->user()->email)
             ->with('wallet')->first();
+
+        $dfm->transfersToVendeur;
         return view('Home.dfm.dashboard', ['dfm'=>$dfm]);
     }
 

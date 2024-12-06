@@ -21,7 +21,6 @@
     <!-- Focus plugin -->
     <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
     @stack('third_party_stylesheets')
-
     @stack('page_css')
 </head>
 
@@ -56,7 +55,8 @@
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
-                        <a href="{{route('account.show')}}" class="btn btn-default btn-flat">{{ __('auth.profile') }}</a>
+                        <a href="{{route('account.show')}}" class="btn btn-default btn-flat">
+                            {{ __('auth.profile') }}</a>
                         <a href="#" class="btn btn-default btn-flat "
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('auth.sign_out') }}
@@ -99,7 +99,7 @@
         <div class="float-right d-none d-sm-block">
             <b>Version</b> 1.0.0
         </div>
-        <strong>Copyright &copy; 2023 <a href="https://mesrs.dz">Mesrs.dz</a>.</strong> All rights
+        <strong>Copyright &copy; 2024 <a href="https://mesrs.dz">Mesrs.dz</a>.</strong> All rights
         reserved.
     </footer>
 </div>

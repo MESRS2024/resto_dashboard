@@ -87,5 +87,8 @@
         <button type="submit" class="btn btn-primary">
             @lang('home/account.save')
         </button>
+        <a class="btn btn-default" href="{{route('2fa.index')}}">
+            @lang('auth.2fa_enable')
+        </a>
     </div>
 </div>

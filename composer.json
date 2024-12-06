@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.1",
         "ext-calendar": "*",
+        "bacon/bacon-qr-code": "^3.0",
         "bavix/laravel-wallet": "^10.1.6",
         "consoletvs/charts": "6.*",
         "doctrine/dbal": "^3.6",
@@ -21,6 +22,7 @@
         "laravolt/avatar": "^5.1",
         "maatwebsite/excel": "^3.1",
         "plank/laravel-mediable": "^5.9",
+        "pragmarx/google2fa-laravel": "^2.2",
         "rappasoft/laravel-livewire-tables": "v2.15.0",
         "wire-elements/modal": "^1.0"
     },

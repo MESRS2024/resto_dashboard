@@ -87,6 +87,21 @@
 
                                     </div>
 
+                                    <div class="input-group mb-3">
+                                        <input type="text"
+                                               name="otp"
+                                               value="{{ old('otp') }}"
+                                               placeholder="{{ __('auth.otp') }}"
+                                               class="form-control @error('otp') is-invalid @enderror">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text"><span class="fas fa-envelope"></span></div>
+                                        </div>
+                                        @error('otp')
+                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+
                                     <div class="row">
 
                                         <div class="col-12">
