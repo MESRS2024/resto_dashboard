@@ -60,6 +60,9 @@ class Resto extends Model implements Wallet, WalletFloat
         return $this->meals()->select('client_id')->groupBy('client_id')->distinct()->pluck('client_id')->toArray();
     }
 
-
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'code', 'email');
+    }
 
 }
