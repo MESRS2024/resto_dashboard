@@ -16,7 +16,7 @@
         "infyomlabs/laravel-generator": "^v6.0.1",
         "infyomlabs/laravel-ui-adminlte": "^v5.2.0",
         "jeremykenedy/laravel-roles": "^10.0",
-        "laravel/framework": "v10.48.18",
+        "laravel/framework": "v10.48.23",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravolt/avatar": "^5.1",
